@@ -1,0 +1,35 @@
+# 論点マスタ（大・中・小）。TAC テキストの章立てに寄せた下書き。
+# subjects を省略した論点は簿記論・財表の両方で使う。
+# id は英小文字・数字・ハイフン。変更すると既存の問題・履歴とのひも付けが切れるので、名前だけ直すこと。
+- { id: cf-objective, major: 総論, middle: 概念フレームワーク, minor: 財務報告の目的, subjects: [zaihyo] }
+- { id: cf-quality, major: 総論, middle: 概念フレームワーク, minor: 会計情報の質的特性, subjects: [zaihyo] }
+- { id: cf-elements, major: 総論, middle: 概念フレームワーク, minor: 財務諸表の構成要素, subjects: [zaihyo] }
+- { id: cf-recognition, major: 総論, middle: 概念フレームワーク, minor: 認識と測定, subjects: [zaihyo] }
+- { id: gp, major: 総論, middle: 企業会計原則, minor: 一般原則 }
+- { id: gp-pl, major: 総論, middle: 企業会計原則, minor: 損益計算書原則 }
+- { id: gp-bs, major: 総論, middle: 企業会計原則, minor: 貸借対照表原則 }
+- { id: revenue, major: 損益会計, middle: 収益認識 }
+- { id: revenue-steps, major: 損益会計, middle: 収益認識, minor: 5つのステップ }
+- { id: revenue-over-time, major: 損益会計, middle: 収益認識, minor: 一定期間にわたり充足される履行義務 }
+- { id: inventory, major: 資産会計, middle: 棚卸資産 }
+- { id: securities, major: 資産会計, middle: 金融商品, minor: 有価証券 }
+- { id: receivables, major: 資産会計, middle: 金融商品, minor: 金銭債権・貸倒引当金 }
+- { id: derivatives, major: 資産会計, middle: 金融商品, minor: デリバティブ・ヘッジ会計 }
+- { id: fixed-assets, major: 資産会計, middle: 有形固定資産 }
+- { id: impairment, major: 資産会計, middle: 固定資産の減損 }
+- { id: intangibles-rd, major: 資産会計, middle: 無形固定資産・研究開発費 }
+- { id: lease, major: 資産会計, middle: リース }
+- { id: aro, major: 負債会計, middle: 資産除去債務 }
+- { id: retirement, major: 負債会計, middle: 退職給付 }
+- { id: provisions, major: 負債会計, middle: 引当金 }
+- { id: equity, major: 純資産会計, middle: 株主資本 }
+- { id: treasury-stock, major: 純資産会計, middle: 株主資本, minor: 自己株式 }
+- { id: tax-effect, major: 特殊論点, middle: 税効果会計 }
+- { id: fx, major: 特殊論点, middle: 外貨換算 }
+- { id: accounting-changes, major: 特殊論点, middle: 会計上の変更及び誤謬の訂正 }
+- { id: comprehensive-income, major: 特殊論点, middle: 包括利益 }
+- { id: business-combination, major: 特殊論点, middle: 企業結合・事業分離 }
+- { id: consolidation, major: 特殊論点, middle: 連結会計 }
+- { id: fair-value, major: 特殊論点, middle: 時価の算定 }
+- { id: cash-flow, major: 特殊論点, middle: キャッシュ・フロー計算書 }
+- { id: branch, major: 特殊論点, middle: 本支店会計, subjects: [boki] }

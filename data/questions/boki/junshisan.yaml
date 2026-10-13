@@ -1,0 +1,52 @@
+# 簿記論：純資産（自己株式）・収益認識
+defaults:
+  subject: boki
+  status: unverified
+  source: { type: original }
+  difficulty: 2
+  updatedAt: "2026-10-13"
+questions:
+  - id: b-ts-001
+    topicId: treasury-stock
+    format: choice
+    prompt: 自己株式処分差益の計上先はどれか。
+    choices: [その他資本剰余金, 資本準備金, その他利益剰余金（繰越利益剰余金）, 営業外収益]
+    answer: 0
+    explanation: 自己株式の処分は株主との資本取引なので、差益は損益に計上せず資本剰余金（その他資本剰余金）とする。
+    basis: [{ standardId: treasury-stock, ref: 第9項 }]
+    standardIds: [treasury-stock]
+    basedOn: { treasury-stock: "2015-03-26" }
+
+  - id: b-ts-002
+    topicId: treasury-stock
+    format: tf
+    prompt: 自己株式処分差損の計上などでその他資本剰余金の残高が負の値となった場合、会計期間末においてその他資本剰余金を零とし、負の値をその他利益剰余金（繰越利益剰余金）から減額する。
+    answer: true
+    explanation: 処分差損はその他資本剰余金から減額する（第10項）。期末に負の残高が残るときだけ繰越利益剰余金で補てんする。
+    basis:
+      - { standardId: treasury-stock, ref: 第12項 }
+      - { standardId: treasury-stock, ref: 第10項 }
+    standardIds: [treasury-stock]
+    basedOn: { treasury-stock: "2015-03-26" }
+
+  - id: b-ts-003
+    topicId: treasury-stock
+    format: flashcard
+    prompt: 取得した自己株式は、貸借対照表でどう表示する？
+    answerText: 取得原価で、純資産の部の株主資本から控除する（株主資本の末尾に控除形式）。
+    explanation: 自己株式は資産ではなく、株主への払戻し（資本の控除）と考える。
+    basis:
+      - { standardId: treasury-stock, ref: 第7項 }
+      - { standardId: treasury-stock, ref: 第8項 }
+    standardIds: [treasury-stock]
+    basedOn: { treasury-stock: "2015-03-26" }
+
+  - id: b-rev-001
+    topicId: revenue-over-time
+    format: flashcard
+    prompt: 一定の期間にわたり充足される履行義務で、進捗度を合理的に見積れないが、発生する費用は回収できる見込みのときの処理は？
+    answerText: 進捗度を合理的に見積ることができる時まで、原価回収基準により処理する（発生した費用と同額の収益を計上）。
+    explanation: 旧工事契約基準の「工事完成基準」とは異なる点に注意。
+    basis: [{ standardId: revenue, ref: 第45項 }]
+    standardIds: [revenue]
+    basedOn: { revenue: "2024-09-13" }

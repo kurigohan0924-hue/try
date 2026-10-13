@@ -3,8 +3,30 @@
 要件の原典は `docs/requirements.md`。このファイルには「決まった方針・規約」と「現在地」だけを書き、作業のたびに更新する。
 
 ## 現在地
-- ステップ2：計画（`docs/plan.md`）を提示済み。ユーザーの承認待ち。実装はまだ行わない。
-- 次：承認後にフェーズ1。
+- 計画（`docs/plan.md`）承認済み（2026-10-13）。
+- **フェーズ1 実装済み・ユーザーの動作確認待ち**。確認が取れるまでフェーズ2に進まない。
+- 次：フェーズ2（FSRS・今日の復習・各モード・PWA/オフライン・インポート）。
+
+## コマンド
+- `npm run dev` 開発サーバー / `npm run build` 本番ビルド（validate と型チェック込み）
+- `npm run check` = validate + typecheck + lint + test（push 前に必ず通す）
+- `npm run validate` 問題データの検証（`scripts/validate-data.ts`）
+
+## 構成
+- `data/standards.json` 基準マスタ / `data/topics.yaml` 論点マスタ / `data/questions/<科目>/*.yaml` 基本問題 / `data/schema/*.json` JSON Schema
+- `src/domain/` React に依存しない純粋関数（grading・revisionCheck・session・validate・questionFile）。ロジックはここに書いてテストする
+- `src/db/` Dexie（IndexedDB）とバックアップ / `src/data/bank.ts` YAML・JSON の取り込み（import.meta.glob）
+- `src/app/usePool.ts` 基本問題＋端末の問題に上書き・改正チェックを適用した出題プール
+- `src/features/<画面>/` 画面 / `src/ui/` 共通部品と CSS（CSS 変数でライト・ダーク）
+- ルーティングは HashRouter（GitHub Pages とオフラインで 404 を避ける）。`base` は `GITHUB_PAGES=true` のとき `/try/`
+- `.github/workflows/ci.yml`（全ブランチで check+build）、`deploy.yml`（main への push で Pages に配信）
+
+## 規約
+- 問題の書き方は `docs/writing-guide.md`。基本問題は basis（根拠）・standardIds・basedOn 必須。答練（toren）はリポジトリに入れない
+- standards.json の `version` は基準そのものの最終改正日。他基準の公表に伴う修正は majorChanges に記録し、問題に影響するときだけ version を上げる
+- 根拠は原文（ASBJ・金融庁サイト）で照合してから書く。照合できない項番号は `unconfirmed: true`（企業会計原則は原文の公的な掲載先が見つからず、現状すべて unconfirmed）
+- 基準原文の PDF はリポジトリに置かず、作業時に scratchpad へ取得する（`.gitignore` で `*.pdf`・`reference/` を除外）
+- 端末の問題 ID は `u-<uuid>`、追加論点は `c-<uuid>`、履歴は `r-<uuid>`
 
 ## 作業ルール（ユーザー指定）
 - いきなり実装しない。計画の承認後にフェーズ単位で進め、各フェーズ終了時に動作確認方法を示して止まる。
