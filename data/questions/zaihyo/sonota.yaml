@@ -1,0 +1,67 @@
+# 財表：負債会計・特殊論点
+defaults:
+  subject: zaihyo
+  status: unverified
+  source: { type: original }
+  difficulty: 2
+  updatedAt: "2026-10-13"
+questions:
+  - id: z-aro-001
+    topicId: aro
+    format: tf
+    prompt: 資産除去債務に対応する除去費用は、資産除去債務を負債として計上した時に、同額を関連する有形固定資産の帳簿価額に加える。
+    answer: true
+    explanation: 資産負債の両建処理。除去費用は減価償却を通じて残存耐用年数にわたり費用配分される。引当金処理では除去に必要な金額が貸借対照表に計上されず負債計上が不十分なため、両建処理とした（第34項）。
+    basis: [{ standardId: aro, ref: 第7項 }]
+    standardIds: [aro]
+    basedOn: { aro: "2024-09-13" }
+
+  - id: z-ret-001
+    topicId: retirement
+    format: tf
+    prompt: 退職給付会計の数理計算上の差異は、原則として発生した期に一括して費用処理する。
+    answer: false
+    explanation: 原則は、平均残存勤務期間以内の一定の年数で按分した額を毎期費用処理する（遅延認識）。当期に発生した未認識分は、税効果を調整の上、その他の包括利益を通じて純資産の部に計上する。
+    basis: [{ standardId: retirement-benefits, ref: 第24項 }]
+    standardIds: [retirement-benefits]
+    basedOn: { retirement-benefits: "2016-12-16" }
+
+  - id: z-tax-001
+    topicId: tax-effect
+    format: choice
+    prompt: 繰延税金資産・繰延税金負債の金額の計算に用いる税率はどれか。
+    choices:
+      - 回収又は支払が行われると見込まれる期の税率
+      - 一時差異が発生した期の税率
+      - 当期の税率（変更があっても見直さない）
+      - 過去3年間の平均税率
+    answer: 0
+    explanation: 資産負債法の考え方。将来の回収・支払額を表すので、解消時の税率を使い、税率が変われば見直す（繰延法なら発生時の税率）。
+    basis: [{ standardId: tax-effect, ref: 第二 二 2. }]
+    standardIds: [tax-effect]
+    basedOn: { tax-effect: "2026-07-07" }
+
+  - id: z-chg-001
+    topicId: accounting-changes
+    format: tf
+    prompt: 会計上の見積りの変更は、新たな見積りを過去の期間に遡及して適用する。
+    answer: false
+    explanation: 見積りの変更は遡及処理しない。変更期間のみに影響する場合はその期間で、将来にも影響する場合は将来にわたり会計処理する（プロスペクティブ）。過去の見積りは当時の最善の見積りであるため。
+    basis: [{ standardId: accounting-changes, ref: 第17項 }]
+    standardIds: [accounting-changes]
+    basedOn: { accounting-changes: "2020-03-31" }
+
+  - id: z-chg-002
+    topicId: accounting-changes
+    format: choice
+    prompt: 会計基準等の改正以外の「正当な理由」による会計方針の変更の原則的な取扱いはどれか。
+    choices:
+      - 新たな会計方針を過去の期間のすべてに遡及適用する
+      - 新たな会計方針を当期の期首から将来に向かって適用する
+      - 累積的影響額を当期の特別損益に計上する
+      - 変更の内容を注記するのみで処理は変えない
+    answer: 0
+    explanation: 期間比較可能性を確保するため遡及適用する。会計基準等の改正に伴う変更は、特定の経過的な取扱いがあればそれに従う。
+    basis: [{ standardId: accounting-changes, ref: 第6項(2) }]
+    standardIds: [accounting-changes]
+    basedOn: { accounting-changes: "2020-03-31" }

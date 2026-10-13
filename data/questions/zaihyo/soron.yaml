@@ -1,0 +1,98 @@
+# 財表：総論（概念フレームワーク・企業会計原則）
+defaults:
+  subject: zaihyo
+  status: unverified
+  source: { type: original }
+  difficulty: 2
+  updatedAt: "2026-10-13"
+questions:
+  - id: z-cf-001
+    topicId: cf-quality
+    format: choice
+    prompt: 概念フレームワークで、会計情報に求められる「最も基本的な特性」とされているものはどれか。
+    choices: [意思決定有用性, 信頼性, 比較可能性, 内的整合性]
+    answer: 0
+    explanation: >-
+      財務報告の目的（投資家の将来キャッシュフロー予測に役立つ企業成果等の開示）を達成するために、
+      会計情報に求められる最も基本的な特性が意思決定有用性。信頼性はそれを支える下位の特性、
+      内的整合性と比較可能性は全体を基礎から支える一般的制約となる特性。
+    basis: [{ standardId: concept-framework, ref: 第2章 第1項 }]
+    standardIds: [concept-framework]
+    basedOn: { concept-framework: "2006-12-28" }
+
+  - id: z-cf-002
+    topicId: cf-quality
+    format: tf
+    prompt: >-
+      概念フレームワークでは、意思決定有用性は「意思決定との関連性」と「信頼性」の2つの下位の特性に支えられ、
+      さらに内的整合性と比較可能性がそれらを基礎から支えるとされている。
+    answer: true
+    explanation: 階層は「意思決定有用性 ← 関連性・信頼性 ← 内的整合性・比較可能性（一般的制約）」。比較可能性は下位の特性ではなく一般的制約である点に注意。
+    basis: [{ standardId: concept-framework, ref: 第2章 第2項 }]
+    standardIds: [concept-framework]
+    basedOn: { concept-framework: "2006-12-28" }
+
+  - id: z-cf-003
+    topicId: cf-elements
+    format: flashcard
+    prompt: 概念フレームワークにおける「資産」の定義は？
+    answerText: 過去の取引または事象の結果として、報告主体が支配している経済的資源。
+    explanation: 「支配」は所有権の有無を問わない。経済的資源とはキャッシュの獲得に貢献する便益の源泉（第3章 注(2)）。
+    basis: [{ standardId: concept-framework, ref: 第3章 第4項 }]
+    standardIds: [concept-framework]
+    basedOn: { concept-framework: "2006-12-28" }
+
+  - id: z-cf-004
+    topicId: cf-elements
+    format: flashcard
+    prompt: 概念フレームワークにおける「純利益」の定義は？（キーワード：リスク）
+    answerText: >-
+      特定期間の期末までに生じた純資産の変動額（所有者等との直接的な取引による部分を除く）のうち、
+      その期間中にリスクから解放された投資の成果であって、報告主体の所有者に帰属する部分。
+    explanation: 純利益は純資産のうちもっぱら株主資本だけを増減させる。包括利益との違いは「リスクからの解放」と「所有者に帰属」。
+    basis: [{ standardId: concept-framework, ref: 第3章 第9項 }]
+    standardIds: [concept-framework]
+    basedOn: { concept-framework: "2006-12-28" }
+
+  - id: z-gp-001
+    topicId: gp
+    format: choice
+    prompt: 継続性の原則：「企業会計は、その処理の原則及び手続を毎期継続して適用し、（　）これを変更してはならない。」
+    choices: [みだりに, 原則として, いかなる場合にも, 経営者の判断により]
+    answer: 0
+    explanation: 「みだりに」変更してはならない＝正当な理由があれば変更できる。変更を認めないのは利益操作の防止と期間比較性の確保のため。
+    basis: [{ standardId: bac-principles, ref: 第一 一般原則 五, unconfirmed: true }]
+    standardIds: [bac-principles]
+    basedOn: { bac-principles: "1982-04-20" }
+
+  - id: z-gp-002
+    topicId: gp
+    format: tf
+    prompt: 保守主義の原則のもとでは、企業の財政に不利な影響が生じる可能性に備えるためであれば、過度に保守的な会計処理を行うことも認められる。
+    answer: false
+    explanation: 注解は、過度に保守的な会計処理によって財政状態・経営成績の真実な報告をゆがめてはならないとしている。保守主義は真実性の原則の枠内で認められる。
+    basis:
+      - { standardId: bac-principles, ref: 第一 一般原則 六, unconfirmed: true }
+      - { standardId: bac-principles, ref: 注解 注4, unconfirmed: true }
+    standardIds: [bac-principles]
+    basedOn: { bac-principles: "1982-04-20" }
+
+  - id: z-gp-003
+    topicId: gp
+    format: tf
+    prompt: 重要性の乏しいものについて、本来の厳密な会計処理によらず他の簡便な方法によることも、正規の簿記の原則に従った処理として認められる。
+    answer: true
+    explanation: 重要性の原則は正規の簿記の原則・明瞭性の原則に関係する。重要性の乏しい項目に簡便な処理を認める根拠になる。
+    basis: [{ standardId: bac-principles, ref: 注解 注1, unconfirmed: true }]
+    standardIds: [bac-principles]
+    basedOn: { bac-principles: "1982-04-20" }
+
+  - id: z-gp-004
+    topicId: gp
+    format: flashcard
+    prompt: 単一性の原則の内容を一言で（形式と実質の関係）。
+    answerText: 形式多元・実質一元。目的別に異なる形式の財務諸表を作ってよいが、内容は信頼しうる会計記録に基づき、政策の考慮で事実の真実な表示をゆがめてはならない。
+    explanation: 株主総会提出用・信用目的・租税目的などで形式が異なることは認めるが、基礎となる会計記録は一つでなければならない。
+    basis: [{ standardId: bac-principles, ref: 第一 一般原則 七, unconfirmed: true }]
+    standardIds: [bac-principles]
+    basedOn: { bac-principles: "1982-04-20" }

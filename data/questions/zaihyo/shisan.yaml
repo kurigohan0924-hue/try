@@ -1,0 +1,135 @@
+# 財表：資産会計・損益会計
+defaults:
+  subject: zaihyo
+  status: unverified
+  source: { type: original }
+  difficulty: 2
+  updatedAt: "2026-10-13"
+questions:
+  - id: z-inv-001
+    topicId: inventory
+    format: choice
+    prompt: 通常の販売目的で保有する棚卸資産の期末の正味売却価額が取得原価より下落している場合、貸借対照表価額はどれか。
+    choices: [正味売却価額, 取得原価, 再調達原価, 正味売却価額と再調達原価のいずれか低い方]
+    answer: 0
+    explanation: 収益性が低下した場合は、回収可能な額（正味売却価額）まで帳簿価額を切り下げ、差額は当期の費用とする。損失を将来に繰り延べないための処理。
+    basis: [{ standardId: inventory, ref: 第7項 }]
+    standardIds: [inventory]
+    basedOn: { inventory: "2019-07-04" }
+
+  - id: z-imp-001
+    topicId: impairment
+    format: choice
+    prompt: 減損の兆候がある資産グループについて、減損損失を「認識するかどうか」を判定するとき、帳簿価額と比較する金額はどれか。
+    choices: [割引前将来キャッシュ・フローの総額, 回収可能価額, 使用価値, 正味売却価額]
+    answer: 0
+    explanation: 認識の判定は割引前将来CFの総額で行い、下回れば減損損失を認識する。割引前を使うのは、減損の存在が相当程度確実な場合に限って認識するため。測定（いくら減額するか）では回収可能価額を使う。
+    basis: [{ standardId: impairment, ref: 二 2.(1) }]
+    standardIds: [impairment]
+    basedOn: { impairment: "2024-09-13" }
+
+  - id: z-imp-002
+    topicId: impairment
+    format: tf
+    prompt: 減損会計における回収可能価額とは、正味売却価額と使用価値のいずれか低い方の金額をいう。
+    answer: false
+    explanation: いずれか「高い方」。企業は投資を売却（正味売却価額）か使用（使用価値）のいずれかで回収するため、高い方が回収可能価額になる（設定に関する意見書）。
+    basis: [{ standardId: impairment, ref: 注解 注1 1. }]
+    standardIds: [impairment]
+    basedOn: { impairment: "2024-09-13" }
+
+  - id: z-imp-003
+    topicId: impairment
+    format: tf
+    prompt: 減損処理後に回収可能価額が回復した場合でも、減損損失の戻入れは行わない。
+    answer: true
+    explanation: 減損の存在が相当程度確実な場合に限って認識・測定していること、戻入れは事務的負担を増大させるおそれがあることなどから、戻入れは行わない（設定に関する意見書）。
+    basis: [{ standardId: impairment, ref: 三 2. }]
+    standardIds: [impairment]
+    basedOn: { impairment: "2024-09-13" }
+
+  - id: z-sec-001
+    topicId: securities
+    format: tf
+    prompt: その他有価証券の評価差額は、洗い替え方式に基づき、全部純資産直入法または部分純資産直入法のいずれかにより処理する。
+    answer: true
+    explanation: 原則として時価で評価するが、売買目的ではない（直ちに売却できない事情がある）ため、評価差額は当期の損益にせず純資産の部に計上する。部分純資産直入法では評価差損のみ当期の損失とする。
+    basis: [{ standardId: financial-instruments, ref: 第18項 }]
+    standardIds: [financial-instruments]
+    basedOn: { financial-instruments: "2026-06-02" }
+
+  - id: z-rev-001
+    topicId: revenue-over-time
+    format: tf
+    prompt: 収益認識基準では、一定の期間にわたり充足される履行義務となるのは、第38項の(1)から(3)の要件をすべて満たす場合に限られる。
+    answer: false
+    explanation: (1)〜(3)の「いずれか」を満たせば一定の期間にわたり充足される履行義務となる。いずれも満たさない場合は一時点で充足される履行義務。なお(3)の中の①②は「いずれも」満たす必要がある。
+    basis: [{ standardId: revenue, ref: 第38項 }]
+    standardIds: [revenue]
+    basedOn: { revenue: "2024-09-13" }
+
+  - id: z-rev-002
+    topicId: revenue-steps
+    format: flashcard
+    prompt: 収益認識の5つのステップを順に。
+    answerText: |-
+      (1) 顧客との契約を識別する
+      (2) 契約における履行義務を識別する
+      (3) 取引価格を算定する
+      (4) 契約における履行義務に取引価格を配分する
+      (5) 履行義務を充足した時に又は充足するにつれて収益を認識する
+    explanation: 基本となる原則は「約束した財又はサービスの顧客への移転を、その交換で企業が権利を得ると見込む対価の額で描写する」（第16項）。
+    basis: [{ standardId: revenue, ref: 第17項 }]
+    standardIds: [revenue]
+    basedOn: { revenue: "2024-09-13" }
+
+  - id: z-rd-001
+    topicId: intangibles-rd
+    format: tf
+    prompt: 研究開発費は、すべて発生時に費用として処理しなければならない。
+    answer: true
+    explanation: 将来の収益獲得が不確実で、資産計上の要件を定めても客観的な判断が難しく、企業間の比較可能性が損なわれるため、発生時に費用処理する。
+    basis: [{ standardId: rd, ref: 三 }]
+    standardIds: [rd]
+    basedOn: { rd: "2008-12-26" }
+
+  - id: z-lease-001
+    topicId: lease
+    format: tf
+    prompt: 新リース会計基準（企業会計基準第34号）では、借手はリースをファイナンス・リースとオペレーティング・リースに区分し、オペレーティング・リースは賃貸借処理する。
+    answer: false
+    explanation: 新基準の借手は、すべてのリースを使用権の取得と捉え、使用権資産とリース負債を計上する（単一の会計処理モデル、IFRS第16号と同様）。区分による2つのモデルは採用していない。
+    basis:
+      - { standardId: lease-2024, ref: 第33項 }
+      - { standardId: lease-2024, ref: BC39項 }
+    standardIds: [lease-2024]
+    basedOn: { lease-2024: "2024-09-13" }
+
+  - id: z-lease-002
+    topicId: lease
+    format: choice
+    prompt: 旧リース会計基準（企業会計基準第13号）で、ファイナンス・リース取引に該当するための2つの要件の組み合わせはどれか。
+    choices:
+      - 解約不能（ノンキャンセラブル）とフルペイアウト
+      - 所有権移転条項と割安購入選択権
+      - 解約不能と所有権移転条項
+      - フルペイアウトと特別仕様物件
+    answer: 0
+    explanation: 中途解約できない（又はこれに準ずる）こと、借手が経済的利益を実質的に享受し、使用に伴うコストを実質的に負担すること（フルペイアウト）。所有権移転条項・割安購入選択権・特別仕様は「所有権移転か否か」の判定に使う。
+    basis: [{ standardId: lease-2007, ref: 第5項 }]
+    standardIds: [lease-2007]
+    basedOn: { lease-2007: "2007-03-30" }
+
+  - id: z-lease-003
+    topicId: lease
+    format: flashcard
+    prompt: 【新旧比較】借手の会計処理は、旧基準（第13号）と新基準（第34号）でどう違う？
+    answerText: |-
+      旧：ファイナンス・リース取引は通常の売買取引に準じて処理（リース資産・リース債務を計上）、オペレーティング・リース取引は賃貸借処理。
+      新：区分せず、原則すべてのリースで使用権資産とリース負債を計上（単一の会計処理モデル）。
+    explanation: 新基準は2027年4月1日以後開始年度の期首から適用（早期適用可）。両方が出題される可能性に備えて比較で覚える。
+    basis:
+      - { standardId: lease-2007, ref: 第9項 }
+      - { standardId: lease-2024, ref: 第33項 }
+    standardIds: [lease-2007, lease-2024]
+    basedOn: { lease-2007: "2007-03-30", lease-2024: "2024-09-13" }

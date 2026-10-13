@@ -1,0 +1,10 @@
+node_modules
+dist
+dev-dist
+*.local
+.DS_Store
+# 著作権のある資料・個人データはコミットしない（公開リポジトリ）
+reference/
+*.pdf
+backup*.json
+zeirishi-backup-*.json

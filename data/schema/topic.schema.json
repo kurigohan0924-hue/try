@@ -1,0 +1,14 @@
+{
+  "$id": "topic.schema.json",
+  "title": "Topic",
+  "type": "object",
+  "required": ["id", "major", "middle"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "major": { "type": "string", "minLength": 1 },
+    "middle": { "type": "string", "minLength": 1 },
+    "minor": { "type": "string" },
+    "subjects": { "type": "array", "items": { "enum": ["boki", "zaihyo"] } }
+  },
+  "additionalProperties": false
+}

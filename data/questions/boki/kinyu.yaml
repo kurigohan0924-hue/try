@@ -1,0 +1,102 @@
+# 簿記論：金融商品（有価証券・貸倒引当金）・外貨換算
+defaults:
+  subject: boki
+  status: unverified
+  source: { type: original }
+  difficulty: 2
+  updatedAt: "2026-10-13"
+  standardIds: [financial-instruments]
+  basedOn: { financial-instruments: "2026-06-02" }
+questions:
+  - id: b-sec-001
+    topicId: securities
+    format: choice
+    prompt: 売買目的有価証券の期末の評価差額の処理はどれか。
+    choices: [当期の損益として処理する, 純資産の部に計上する, 評価差益は純資産の部、評価差損は当期の損失, 評価差額は計上しない（取得原価のまま）]
+    answer: 0
+    explanation: 時価の変動により利益を得る目的で保有するので、時価で評価し評価差額は当期の損益（有価証券評価損益）とする。
+    basis: [{ standardId: financial-instruments, ref: 第15項 }]
+
+  - id: b-sec-002
+    topicId: securities
+    format: tf
+    prompt: 満期保有目的の債券を債券金額と異なる価額で取得し、その差額の性格が金利の調整と認められるときは、償却原価法に基づいて算定された価額を貸借対照表価額とする。
+    answer: true
+    explanation: 満期まで保有するので時価変動は関係ない。取得原価が原則だが、金利調整差額は償却原価法で期間配分する。
+    basis: [{ standardId: financial-instruments, ref: 第16項 }]
+
+  - id: b-sec-003
+    topicId: securities
+    format: flashcard
+    prompt: 子会社株式・関連会社株式の期末の貸借対照表価額は？（原則）
+    answerText: 取得原価。
+    explanation: 事業投資と同じく時価の変動を財務活動の成果とは捉えないため。ただし時価が著しく下落し回復見込みがあると認められない場合は時価で評価し、差額は当期の損失（第20項）。
+    basis:
+      - { standardId: financial-instruments, ref: 第17項 }
+      - { standardId: financial-instruments, ref: 第20項 }
+
+  - id: b-sec-004
+    topicId: securities
+    format: tf
+    prompt: 部分純資産直入法では、時価が取得原価を上回る銘柄の評価差額は純資産の部に計上し、時価が取得原価を下回る銘柄の評価差額は当期の損失として処理する。
+    answer: true
+    explanation: 原則は全部純資産直入法（評価差額の合計額を純資産の部へ）。部分純資産直入法は評価差損のみ当期の損失とする。いずれも洗い替え方式。純資産の部に計上する評価差額には税効果会計を適用する。
+    basis: [{ standardId: financial-instruments, ref: 第18項 }]
+
+  - id: b-sec-005
+    topicId: securities
+    format: tf
+    prompt: 子会社株式（市場価格あり）の時価が著しく下落した場合でも、取得原価で評価する子会社株式であるため、評価替えは行わない。
+    answer: false
+    explanation: 満期保有目的の債券、子会社株式・関連会社株式、その他有価証券（市場価格のない株式等を除く）は、時価が著しく下落したときは、回復する見込があると認められる場合を除き、時価で評価し評価差額は当期の損失とする（減損処理）。
+    basis: [{ standardId: financial-instruments, ref: 第20項 }]
+
+  - id: b-rec-001
+    topicId: receivables
+    format: flashcard
+    prompt: 貸倒見積高の算定にあたって債権を区分する3つの区分は？
+    answerText: 一般債権 ／ 貸倒懸念債権 ／ 破産更生債権等
+    explanation: 債務者の財政状態及び経営成績等に応じて区分する。区分ごとに算定方法が異なる（第28項）。
+    basis: [{ standardId: financial-instruments, ref: 第27項 }]
+
+  - id: b-rec-002
+    topicId: receivables
+    format: choice
+    prompt: 貸倒懸念債権の貸倒見積高の算定方法として定められているものはどれか。
+    choices:
+      - 財務内容評価法とキャッシュ・フロー見積法のいずれか
+      - 過去の貸倒実績率による方法のみ
+      - 債権額の全額を貸倒見積高とする方法
+      - キャッシュ・フロー見積法のみ
+    answer: 0
+    explanation: 債権の状況に応じていずれかを選ぶ。同一の債権には、債務者の状況が変化しない限り同じ方法を継続適用する。CF見積法は当初の約定利子率で割り引く。
+    basis: [{ standardId: financial-instruments, ref: 第28項(2) }]
+
+  - id: b-rec-003
+    topicId: receivables
+    format: tf
+    prompt: 破産更生債権等の貸倒見積高は、債権額から担保の処分見込額及び保証による回収見込額を減額した残額とする。
+    answer: true
+    explanation: 貸倒懸念債権の財務内容評価法と違い、残額に「財政状態・経営成績を考慮」する手順はなく、残額全部が貸倒見積高になる。
+    basis: [{ standardId: financial-instruments, ref: 第28項(3) }]
+
+  - id: b-fx-001
+    topicId: fx
+    format: tf
+    prompt: 外貨建金銭債権債務（外貨預金を含む）は、決算時に、決算時の為替相場による円換算額を付する。
+    answer: true
+    explanation: 1999年改訂で、短期・長期を問わず原則として決算時の為替相場（CR）で換算することになった（転換請求期間満了前の転換社債などの例外あり）。
+    basis: [{ standardId: foreign-currency, ref: 一 2.(1) }]
+    standardIds: [foreign-currency]
+    basedOn: { foreign-currency: "1999-10-22" }
+
+  - id: b-fx-002
+    topicId: fx
+    format: choice
+    prompt: 決算時の換算によって生じた換算差額の原則的な処理はどれか。
+    choices: [当期の為替差損益として処理する, 純資産の部に計上する, 決済時まで繰り延べる, 翌期首に振り戻す前提で注記のみ行う]
+    answer: 0
+    explanation: 原則は当期の為替差損益。ただし有価証券の時価の著しい下落等による換算差額は評価損、時価評価の評価差額に含まれる換算差額はその評価差額の処理に従う。
+    basis: [{ standardId: foreign-currency, ref: 一 2.(2) }]
+    standardIds: [foreign-currency]
+    basedOn: { foreign-currency: "1999-10-22" }

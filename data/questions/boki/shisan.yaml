@@ -1,0 +1,137 @@
+# 簿記論：棚卸資産・減損・リース・資産除去債務
+defaults:
+  subject: boki
+  status: unverified
+  source: { type: original }
+  difficulty: 2
+  updatedAt: "2026-10-13"
+questions:
+  - id: b-inv-001
+    topicId: inventory
+    format: choice
+    prompt: 収益性の低下による棚卸資産の簿価切下額が、臨時の事象に起因し、かつ、多額であるときの計上区分はどれか。
+    choices: [特別損失, 売上原価, 製造原価, 営業外費用]
+    answer: 0
+    explanation: 原則は売上原価、製造に関連し不可避的に発生するものは製造原価、臨時の事象（重要な事業部門の廃止、災害損失の発生など）に起因し多額なら特別損失。
+    basis: [{ standardId: inventory, ref: 第17項 }]
+    standardIds: [inventory]
+    basedOn: { inventory: "2019-07-04" }
+
+  - id: b-inv-002
+    topicId: inventory
+    format: tf
+    prompt: 前期に計上した棚卸資産の簿価切下額は、洗替え法と切放し法のいずれかを棚卸資産の種類ごとに選択適用できる。
+    answer: true
+    explanation: 売価の下落要因を区分把握できる場合は要因ごとの選択も可。いったん採用した方法は原則として継続適用する。
+    basis: [{ standardId: inventory, ref: 第14項 }]
+    standardIds: [inventory]
+    basedOn: { inventory: "2019-07-04" }
+
+  - id: b-inv-003
+    topicId: inventory
+    format: tf
+    prompt: 臨時の事象に起因し特別損失に計上した簿価切下額も、洗替え法を採用していれば翌期に戻入れを行う。
+    answer: false
+    explanation: 特別損失に計上した場合は、洗替え法を適用していても戻入れを行ってはならない。
+    basis: [{ standardId: inventory, ref: 第17項 }]
+    standardIds: [inventory]
+    basedOn: { inventory: "2019-07-04" }
+
+  - id: b-imp-001
+    topicId: impairment
+    format: choice
+    prompt: 減損損失を認識すべきと判定された資産グループの「測定」では、帳簿価額をいくらまで減額するか。
+    choices: [回収可能価額, 割引前将来キャッシュ・フローの総額, 正味売却価額, 使用価値]
+    answer: 0
+    explanation: 認識の判定は割引前将来CF、測定は回収可能価額（正味売却価額と使用価値のいずれか高い方）。減少額は減損損失として当期の損失とする。
+    basis: [{ standardId: impairment, ref: 二 3. }]
+    standardIds: [impairment]
+    basedOn: { impairment: "2024-09-13" }
+
+  - id: b-imp-002
+    topicId: impairment
+    format: flashcard
+    prompt: 減損の兆候として基準が例示している4つの事象は？
+    answerText: |-
+      ① 営業活動から生ずる損益又はキャッシュ・フローが継続してマイナス（見込みを含む）
+      ② 使用範囲・方法について回収可能価額を著しく低下させる変化（見込みを含む）
+      ③ 経営環境の著しい悪化（見込みを含む）
+      ④ 市場価格の著しい下落
+    explanation: 兆候がある資産（グループ）についてだけ認識の判定を行う。全資産に判定を求めると実務上過大な負担になるため。
+    basis: [{ standardId: impairment, ref: 二 1. }]
+    standardIds: [impairment]
+    basedOn: { impairment: "2024-09-13" }
+
+  - id: b-imp-003
+    topicId: impairment
+    format: tf
+    prompt: 減損損失は、原則として損益計算書の特別損失に計上する。
+    answer: true
+    explanation: 貸借対照表では原則として取得原価から直接控除（減損損失累計額で間接控除も可）。
+    basis: [{ standardId: impairment, ref: 四 2. }]
+    standardIds: [impairment]
+    basedOn: { impairment: "2024-09-13" }
+
+  - id: b-lease-001
+    topicId: lease
+    format: tf
+    prompt: 【旧リース基準】所有権移転外ファイナンス・リース取引に係るリース資産の減価償却費は、原則として、リース期間を耐用年数とし、残存価額をゼロとして算定する。
+    answer: true
+    explanation: 所有権移転ファイナンス・リースは自己所有の固定資産と同一の方法（経済的耐用年数）で償却する点と区別する。
+    basis: [{ standardId: lease-2007, ref: 第12項 }]
+    standardIds: [lease-2007]
+    basedOn: { lease-2007: "2007-03-30" }
+
+  - id: b-lease-002
+    topicId: lease
+    format: tf
+    prompt: 【旧リース基準】リース料総額に含まれる利息相当額は、原則として、リース期間にわたり定額法により配分する。
+    answer: false
+    explanation: 原則は利息法。定額法による配分は、重要性が乏しい場合の簡便的な取扱い（適用指針）として認められるもの。
+    basis: [{ standardId: lease-2007, ref: 第11項 }]
+    standardIds: [lease-2007]
+    basedOn: { lease-2007: "2007-03-30" }
+
+  - id: b-lease-003
+    topicId: lease
+    format: tf
+    prompt: 【新リース基準】借手のリース負債に係る利息相当額は、借手のリース期間にわたり、原則として利息法により配分する。
+    answer: true
+    explanation: 新基準でも利息相当額の配分は原則として利息法。リース負債は未払の借手のリース料から利息相当額を控除した現在価値で計上する（第34項）。
+    basis:
+      - { standardId: lease-2024, ref: 第36項 }
+      - { standardId: lease-2024, ref: 第34項 }
+    standardIds: [lease-2024]
+    basedOn: { lease-2024: "2024-09-13" }
+
+  - id: b-aro-001
+    topicId: aro
+    format: choice
+    prompt: 資産除去債務は発生時にどのように算定するか。
+    choices:
+      - 除去に要する割引前の将来キャッシュ・フローを見積り、割引後の金額で算定する
+      - 除去に要する割引前の将来キャッシュ・フローの金額で算定する
+      - 関連する有形固定資産の取得原価に一定割合を乗じて算定する
+      - 除去時点で見込まれる時価で算定する
+    answer: 0
+    explanation: 割引率は貨幣の時間価値を反映した無リスクの税引前の利率。見積金額は最頻値又は期待値。
+    basis: [{ standardId: aro, ref: 第6項 }]
+    standardIds: [aro]
+    basedOn: { aro: "2024-09-13" }
+
+  - id: b-aro-002
+    topicId: aro
+    format: choice
+    prompt: 時の経過による資産除去債務の調整額（利息費用）は、損益計算書のどこに計上するか。
+    choices:
+      - 関連する有形固定資産の減価償却費と同じ区分
+      - 営業外費用（支払利息）
+      - 特別損失
+      - 販売費及び一般管理費の独立した科目（区分を問わない）
+    answer: 0
+    explanation: 調整額は発生時の費用で、期首の負債の帳簿価額 × 当初負債計上時の割引率で算定する（第9項）。表示は減価償却費と同じ区分。
+    basis:
+      - { standardId: aro, ref: 第14項 }
+      - { standardId: aro, ref: 第9項 }
+    standardIds: [aro]
+    basedOn: { aro: "2024-09-13" }

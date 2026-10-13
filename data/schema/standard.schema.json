@@ -1,0 +1,25 @@
+{
+  "$id": "standard.schema.json",
+  "title": "Standard",
+  "type": "object",
+  "required": ["id", "name", "issuer", "version", "majorChanges", "examScope", "unconfirmed"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "number": { "type": "string" },
+    "issuer": { "enum": ["ASBJ", "企業会計審議会", "ASBJ（討議資料）"] },
+    "version": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "firstIssued": { "type": "string" },
+    "effectiveFrom": { "type": "string" },
+    "earlyAdoption": { "type": "string" },
+    "majorChanges": { "type": "array", "items": { "type": "string" } },
+    "examScope": { "enum": ["in", "out", "unconfirmed"] },
+    "supersedes": { "type": "string" },
+    "supersededBy": { "type": "string" },
+    "label": { "type": "string" },
+    "unconfirmed": { "type": "array", "items": { "type": "string" } },
+    "sourceUrl": { "type": "string" },
+    "note": { "type": "string" }
+  },
+  "additionalProperties": false
+}
